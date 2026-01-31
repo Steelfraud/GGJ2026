@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 6108948017293738176}
   - component: {fileID: 585688460705861598}
   - component: {fileID: 2845422491797038145}
+  - component: {fileID: 4376365898595551103}
   - component: {fileID: 3824373034267315072}
   m_Layer: 0
   m_Name: Player Vehicle
@@ -491,6 +492,19 @@ MonoBehaviour:
   cameraLookTarget: {fileID: 1905451559137196759}
   cameraMoveSpeed: 10
   cameraRotationSpeed: 15
+--- !u!114 &4376365898595551103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859110065136040869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168b25d08dfb4054697637a241dac978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleController: {fileID: 585688460705861598}
 --- !u!54 &3824373034267315072
 Rigidbody:
   m_ObjectHideFlags: 0

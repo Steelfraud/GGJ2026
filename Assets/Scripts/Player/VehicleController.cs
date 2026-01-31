@@ -157,6 +157,15 @@ namespace Sampla.Player
             wheelModel.rotation = rot;
         }
 
+        public float GetAverageFrontWheelsRPM()
+        {
+            float averageRPM = 0;
+            averageRPM += wheelFrontLeft.rpm;
+            averageRPM += wheelFrontRight.rpm;
+            averageRPM /= 2;
+            return averageRPM;
+        }
+
         void OnDrawGizmos()
         {
             if (!Application.isPlaying || vehicleRigidbody == null)

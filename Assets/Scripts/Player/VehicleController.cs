@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sampla.Player
 {
@@ -16,9 +17,11 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float maxReverseTorque = 500;
         [SerializeField, Min(0f)] private float downForce = 200;
         [SerializeField, Min(0f)] private float brakeTorque = 500;
+        [SerializeField, Min(0f)] private float maxSpeedKMH = 300;
 
         [Space]
         [SerializeField, Min(0f)] private float steerSpeed = 10f;
+        [FormerlySerializedAs("steerSpeedCurve")] [SerializeField] private AnimationCurve speedCurve;
         [SerializeField, Min(0f)] private float steerMaxAngle = 25f;
 
 
@@ -53,7 +56,7 @@ namespace Sampla.Player
             playerInputController.OnSteerInput += OnSteerInputChanged;
             playerInputController.OnThrottleInput += OnThrottleInputChanged;
             playerInputController.OnBrakeInput += OnBrakeInputChanged;
-
+            vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
             CenterOfMassUpdate();
         }
 
@@ -81,7 +84,7 @@ namespace Sampla.Player
 
         void FixedUpdate()
         {
-            //DownForceUpdate();
+            DownForceUpdate();
             MotorTorqueUpdate();
             SteeringUpdate();
             BreakUpdate();
@@ -105,12 +108,14 @@ namespace Sampla.Player
                 return;
 
             vehicleRigidbody.centerOfMass = vehicleRigidbody.transform.InverseTransformPoint(centerOfMass.position);
-            Debug.Log("Center Of Mass Updated: " + vehicleRigidbody.worldCenterOfMass);
+            // Debug.Log("Center Of Mass Updated: " + vehicleRigidbody.worldCenterOfMass);
         }
 
         void DownForceUpdate()
         {
-            //vehicleRigidbody.AddForceAtPosition(-downForceCenter.up * downForce, downForceCenter.transform.position);
+            var eval = 1 - (currentSpeedKMH / maxSpeedKMH);
+            var downForceEval = speedCurve.Evaluate(eval) * downForce;
+            vehicleRigidbody.AddForceAtPosition(-transform.up * downForceEval, vehicleRigidbody.position);
         }
 
         void MotorTorqueUpdate()
@@ -136,7 +141,8 @@ namespace Sampla.Player
 
         void SteeringUpdate()
         {
-            currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, steerSpeed * Time.fixedDeltaTime);
+            var steerSpeedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
+            currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, steerSpeedEval * Time.fixedDeltaTime);
 
             wheelFrontLeft.steerAngle = currentSteer;
             wheelFrontRight.steerAngle = currentSteer;

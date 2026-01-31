@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CheckpointRestart",
+                    "type": "Button",
+                    "id": "98d42067-18d6-4ff8-baa0-a542563c64a5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -215,6 +224,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Turbo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae5e3c40-d477-478e-af91-b9872a8d5539",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckpointRestart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24310bd7-151f-451a-b880-6b87dacf87e4",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckpointRestart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

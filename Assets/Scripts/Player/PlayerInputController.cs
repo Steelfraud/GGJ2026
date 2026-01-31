@@ -61,5 +61,10 @@ namespace Sampla.Player
             turboInput = input.Get<float>();
             OnTurboInput?.Invoke(turboInput);
         }
+
+        void OnCheckpointRestart(InputValue input)
+        {
+            GameManager.Instance.ResetPlayerToLastCheckpoint();
+        }
     }
 }

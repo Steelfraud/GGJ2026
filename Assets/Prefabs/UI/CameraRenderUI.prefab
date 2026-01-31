@@ -341,14 +341,15 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues: 0100000002000000030000000400000005000000
-    _keys: 0100000002000000030000000400000005000000
+    _keyValues: 010000000200000003000000040000000500000006000000
+    _keys: 010000000200000003000000040000000500000006000000
     _values:
     - AnimationBool: Vertical Left
     - AnimationBool: Vertical Right
     - AnimationBool: Horizontal Bottom
     - AnimationBool: Horizontal Top
     - AnimationBool: Rotation 360
+    - AnimationBool: DVD Menu
   CurrentState: 0
 --- !u!95 &4401954781873854790
 Animator:

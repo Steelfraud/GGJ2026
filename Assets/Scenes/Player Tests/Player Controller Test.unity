@@ -1213,12 +1213,8 @@ PrefabInstance:
       value: Player Vehicle - Game Version
       objectReference: {fileID: 0}
     - target: {fileID: 4282745881774714658, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
-      propertyPath: invertHeadDirection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282745881774714658, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
-      propertyPath: headTargetFollowSpeed
-      value: 3
+      propertyPath: headTargetTiltSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4553853899101407682, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1319,7 +1315,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 542916479533157366, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
 --- !u!1001 &1071436027
 PrefabInstance:
@@ -1898,7 +1897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1580137950
 Transform:
   m_ObjectHideFlags: 0
@@ -1938,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1678567367
 Transform:
   m_ObjectHideFlags: 0

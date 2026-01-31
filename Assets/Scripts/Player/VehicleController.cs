@@ -52,6 +52,7 @@ namespace Sampla.Player
         [SerializeField] private Transform wheelModelBackLeft;
         [SerializeField] private Transform wheelModelBackRight;
 
+        private float currentSpeedLerp; public float CurrentSpeedLerp { get { return currentSpeedLerp; } }
         private float currentSpeedMS; public float CurrentSpeedMS { get { return currentSpeedMS; } }
         private float currentSpeedKMH; public float CurrentSpeedKMH { get { return currentSpeedKMH; } }
         private float currentDrift; public float CurrentDrift { get { return currentDrift; } }
@@ -112,10 +113,12 @@ namespace Sampla.Player
 
         void FixedUpdate()
         {
+            currentSpeedLerp = currentSpeedKMH / maxSpeedKMH;
+
             if (vehicleRigidbody.isKinematic)
             {
                 return;
-            }
+            }            
 
             DownForceUpdate();
             MotorTorqueUpdate();
@@ -129,7 +132,7 @@ namespace Sampla.Player
 
         void LinearDampingUpdate()
         {
-            vehicleRigidbody.linearDamping = linearDampingCurve.Evaluate(currentSpeedKMH / maxSpeedKMH);
+            vehicleRigidbody.linearDamping = linearDampingCurve.Evaluate(CurrentSpeedLerp);
         }
 
         void Update()
@@ -191,7 +194,7 @@ namespace Sampla.Player
 
         void DownForceUpdate()
         {
-            var downForceEval = downForceCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * downForce;
+            var downForceEval = downForceCurve.Evaluate(CurrentSpeedLerp) * downForce;
             vehicleRigidbody.AddForceAtPosition(-transform.up * downForceEval, vehicleRigidbody.position);
         }
 
@@ -218,7 +221,7 @@ namespace Sampla.Player
 
         void SteeringUpdate()
         {
-            var speedEval = steerSpeedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
+            var speedEval = steerSpeedCurve.Evaluate(CurrentSpeedLerp) * steerSpeed;
             if (Math.Abs(normalizedSteer) < Math.Abs(currentSteer))
             {
                 currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * 10 * Time.fixedDeltaTime);

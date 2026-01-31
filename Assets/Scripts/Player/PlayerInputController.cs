@@ -21,7 +21,7 @@ namespace Sampla.Player
         private float lookInput;
         private float turboInput;
 
-        void Oalidate()
+        void OnValidate()
         {
             if (TryGetComponent(out PlayerInput playerInput))
             {

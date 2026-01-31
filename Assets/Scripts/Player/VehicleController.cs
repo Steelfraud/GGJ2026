@@ -15,10 +15,11 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float reverseThresholdInKMH = 5;
         [SerializeField, Min(0f)] private float reverseTorque = 50;
         [SerializeField, Min(0f)] private float maxReverseTorque = 500;
-        [SerializeField, Min(0f)] private float turboForce = 1000;
         [SerializeField, Min(0f)] private float downForce = 200;
         [SerializeField, Min(0f)] private float brakeTorque = 500;
         [SerializeField, Min(0f)] private float maxSpeedKMH = 300;
+        [SerializeField, Min(0f)] private float turboForce = 1000;
+        [SerializeField, Min(0f)] private float maxTurboTime = 2f;
 
         [Space]
         [SerializeField, Min(0f)] private float steerSpeed = 10f;
@@ -50,6 +51,7 @@ namespace Sampla.Player
         private float currentSpeedKMH; public float CurrentSpeedKMH { get { return currentSpeedKMH; } }
         private float currentDrift; public float CurrentDrift { get { return currentDrift; } }
         private float currentSteer; public float CurrentSteer { get { return currentSteer; } }
+        private float currentTurboTimeLeft; public float CurrentTurboTimeLeft { get { return currentTurboTimeLeft; } }
         private Vector3 currentVelocityDirection; public Vector3 CurrentVelocityDirection { get { return currentVelocityDirection; } }
 
         private float normalizedSteer;
@@ -69,6 +71,7 @@ namespace Sampla.Player
             playerInputController.OnBrakeInput += OnBrakeInputChanged;
             playerInputController.OnTurboInput += OnTurboInputChanged;
             vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
+            currentTurboTimeLeft = maxTurboTime;
             CenterOfMassUpdate();
         }
 
@@ -215,7 +218,17 @@ namespace Sampla.Player
 
         void TurboUpdate()
         {
-            vehicleRigidbody.AddForceAtPosition(turboCenter.forward * turboForce * normalizedTurbo, turboCenter.position);
+            if (normalizedTurbo > 0)
+            {
+                currentTurboTimeLeft = Mathf.Max(currentTurboTimeLeft - Time.fixedDeltaTime, 0f);
+            }
+            else
+            {
+                currentTurboTimeLeft = Mathf.Min(currentTurboTimeLeft + Time.fixedDeltaTime, maxTurboTime);
+            }
+
+            float turboForceMagnitude = currentTurboTimeLeft > 0 ? turboForce * normalizedTurbo : 0f;
+            vehicleRigidbody.AddForceAtPosition(turboCenter.forward * turboForceMagnitude, turboCenter.position);
         }
 
         void UpdateWheels()

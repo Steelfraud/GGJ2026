@@ -27,36 +27,48 @@ namespace Sampla.Player
 
             if (vehicleAngleToVelocity > driftAngle)
             {
-                //if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM)
-                if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM)
+                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
                 {
-                    if (frontLeftWheelDriftParticles != null && !frontLeftWheelDriftParticles.isPlaying)
-                    {
-                        frontLeftWheelDriftParticles.Play();
-                    }
+                    PlayParticles(frontLeftWheelDriftParticles);
                 }
                 else
                 {
-                    frontLeftWheelDriftParticles?.Stop();
+                    StopParticles(frontLeftWheelDriftParticles);
                 }
-                //if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM)
-                if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM)
+                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
                 {
-                    if (frontRightWheelDriftParticles != null && !frontRightWheelDriftParticles.isPlaying)
-                    {
-                        frontRightWheelDriftParticles?.Play();
-                    }
+                    PlayParticles(frontRightWheelDriftParticles);
                 }
                 else
                 {
-                    frontRightWheelDriftParticles?.Stop();
+                    StopParticles(frontRightWheelDriftParticles);
                 }
             }
             else
             {
-                frontLeftWheelDriftParticles?.Stop();
-                frontRightWheelDriftParticles?.Stop();
+                StopParticles(frontLeftWheelDriftParticles);
+                StopParticles(frontRightWheelDriftParticles);
             }
+        }
+
+        void PlayParticles(ParticleSystem particleSystem)
+        {
+            if (particleSystem == null || particleSystem.isEmitting)
+                return;
+
+            particleSystem.Play();
+            //Debug.Log("Play particles: " + particleSystem.gameObject.name);
+        }
+
+        void StopParticles(ParticleSystem particleSystem)
+        {
+            if (particleSystem == null || !particleSystem.isEmitting /*|| !particleSystem.IsAlive(withChildren: true)*/)
+                return;
+
+            particleSystem.Stop();
+            //Debug.Log("Stop particles: " + particleSystem.gameObject.name);
         }
     }
 }

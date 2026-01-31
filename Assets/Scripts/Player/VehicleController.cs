@@ -126,7 +126,7 @@ namespace Sampla.Player
                 wheelFrontRight.motorTorque = Mathf.Max(wheelFrontRight.motorTorque - torque, 0);
             }
 
-            Debug.Log("Left: " + wheelFrontLeft.rpm + " | Right: " + wheelFrontRight.rpm);
+            //Debug.Log("Left: " + wheelFrontLeft.rpm + " | Right: " + wheelFrontRight.rpm);
 
 
             // wheelFrontLeft.motorTorque = currentTorque;

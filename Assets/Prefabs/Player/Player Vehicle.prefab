@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleController: {fileID: 585688460705861598}
-  driftAngle: 2
+  driftAngle: 9
   driftSpeed: 20
   driftRPM: 200
   frontLeftWheelDriftParticles: {fileID: 3891422386235780222}

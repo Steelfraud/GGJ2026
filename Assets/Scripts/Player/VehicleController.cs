@@ -24,6 +24,8 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float maxSpeedKMH = 300;
         [SerializeField, Min(0f)] private float turboForce = 1000;
         [SerializeField, Min(0f)] private float maxTurboTime = 2f;
+        [SerializeField, Min(0f)] private float turboRefillCooldown = 1f;
+        [SerializeField, Range(0f, 1f)] private float turboRefillMultiplier = 1f;
         [SerializeField] private AnimationCurve linearDampingCurve;
 
         [Space]
@@ -58,6 +60,7 @@ namespace Sampla.Player
         private float currentDrift; public float CurrentDrift { get { return currentDrift; } }
         private float currentSteer; public float CurrentSteer { get { return currentSteer; } }
         private float currentTurboTimeLeft; public float CurrentTurboTimeLeft { get { return currentTurboTimeLeft; } }
+        private float normalizedTurboLeft; public float NormalizedTurboLeft { get { return normalizedTurboLeft; } }
         private Vector3 currentVelocityDirection; public Vector3 CurrentVelocityDirection { get { return currentVelocityDirection; } }
 
         private float normalizedSteer;
@@ -66,6 +69,7 @@ namespace Sampla.Player
         private float normalizedTurbo;
 
         private bool isTurboing;
+        private float lastTurboTime;
 
         void OnValidate()
         {
@@ -80,6 +84,7 @@ namespace Sampla.Player
             playerInputController.OnTurboInput += OnTurboInputChanged;
             // vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
             currentTurboTimeLeft = maxTurboTime;
+            normalizedTurboLeft = 1;
             CenterOfMassUpdate();
         }
 
@@ -276,13 +281,15 @@ namespace Sampla.Player
         {
             if (normalizedTurbo > 0)
             {
+                lastTurboTime = Time.time;
                 currentTurboTimeLeft = Mathf.Max(currentTurboTimeLeft - Time.fixedDeltaTime, 0f);
             }
-            else
+            else if (normalizedTurbo == 0 && Time.time >= lastTurboTime + turboRefillCooldown)
             {
-                currentTurboTimeLeft = Mathf.Min(currentTurboTimeLeft + Time.fixedDeltaTime, maxTurboTime);
+                currentTurboTimeLeft = Mathf.Min(currentTurboTimeLeft + (Time.fixedDeltaTime * turboRefillMultiplier), maxTurboTime);
             }
 
+            normalizedTurboLeft = currentTurboTimeLeft / maxTurboTime;
             float turboForceMagnitude = currentTurboTimeLeft > 0 ? turboForce * normalizedTurbo : 0f;
 
             if (turboForceMagnitude > 0 && !isTurboing)

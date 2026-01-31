@@ -1086,6 +1086,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 603799173}
     m_Modifications:
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: StateToSet
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: SetPlayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3689043303800018540, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
       propertyPath: m_Name
       value: TriggerGateParent (2)
@@ -1259,6 +1267,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 603799173}
     m_Modifications:
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: StateToSet
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: SetPlayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: PlayerEnteredArea.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3689043303800018540, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
       propertyPath: m_Name
       value: TriggerGateParent (1)
@@ -1541,6 +1561,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 603799173}
     m_Modifications:
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: StateToSet
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: SetPlayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129698117107548061, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
+      propertyPath: PlayerEnteredArea.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3689043303800018540, guid: bd73eb3a77aef6347ac5d304c98ac49f, type: 3}
       propertyPath: m_Name
       value: TriggerGateParent

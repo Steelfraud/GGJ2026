@@ -87,6 +87,11 @@ namespace Sampla.Player
 
         void FixedUpdate()
         {
+            if (vehicleRigidbody.isKinematic)
+            {
+                return;
+            }
+
             DownForceUpdate();
             MotorTorqueUpdate();
             SteeringUpdate();
@@ -97,6 +102,41 @@ namespace Sampla.Player
         void Update()
         {
             UpdateWheels();
+        }
+
+        public void ResetVehicle()
+        {
+            vehicleRigidbody.linearVelocity = Vector3.zero;
+            vehicleRigidbody.angularVelocity = Vector3.zero;
+
+            wheelBackLeft.motorTorque = 0;
+            wheelBackLeft.brakeTorque = 0;
+            wheelBackLeft.steerAngle = 0;
+
+            wheelBackRight.motorTorque = 0;
+            wheelBackRight.brakeTorque = 0;
+            wheelBackRight.steerAngle = 0;
+
+            wheelFrontLeft.motorTorque = 0;
+            wheelFrontLeft.brakeTorque = 0;
+            wheelFrontLeft.steerAngle = 0;
+
+            wheelFrontRight.motorTorque = 0;
+            wheelFrontRight.brakeTorque = 0;
+            wheelFrontRight.steerAngle = 0;
+
+            vehicleRigidbody.isKinematic = true;
+        }
+
+        public void RestartVehicle()
+        {
+            vehicleRigidbody.isKinematic = false;
+
+            vehicleRigidbody.linearVelocity = transform.forward * 20;
+            wheelBackLeft.motorTorque = 250;
+            wheelBackRight.motorTorque = 250;
+            wheelFrontLeft.motorTorque = 250;
+            wheelFrontRight.motorTorque = 250;
         }
 
         void CacheProperties()

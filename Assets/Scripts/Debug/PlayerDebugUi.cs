@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Text;
 
 public class PlayerDebugUi : MonoBehaviour
@@ -15,6 +14,6 @@ public class PlayerDebugUi : MonoBehaviour
         var offsetX = 50;
         var offsetY = 50;
         var sb = new StringBuilder();
-        GUI.Box(new Rect(screenWidth - offsetX - boxW, screenHeight - offsetY - boxH, boxW, boxH), new GUIContent(sb.ToString()));
+        // GUI.Box(new Rect(screenWidth - offsetX - boxW, screenHeight - offsetY - boxH, boxW, boxH), new GUIContent(sb.ToString()));
     }
 }

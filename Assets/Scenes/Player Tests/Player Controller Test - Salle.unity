@@ -136,6 +136,10 @@ PrefabInstance:
       value: Player Vehicle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1084221111225844021, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
+      propertyPath: downForce
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084221111225844021, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
       propertyPath: steerSpeedCurve.m_Curve.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -201,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3619137997228049771, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
       propertyPath: m_AngularDrag
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5705643924493153427, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -246,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 6420777675753879705, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204620859546413385, guid: 8db1ce140afb0d0409cb4e4734ea0eca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

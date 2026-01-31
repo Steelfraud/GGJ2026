@@ -8,9 +8,69 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: downForce
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: maxSpeedKMH
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[0].value
+      value: 1.0018005
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[1].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[0].inSlope
+      value: -2.1242497
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0.008936399
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[0].outSlope
+      value: -2.1242497
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33188725
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0.008936399
+      objectReference: {fileID: 0}
+    - target: {fileID: 585688460705861598, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: steerSpeedCurve.m_Curve.Array.data[0].outWeight
+      value: 0.045833334
+      objectReference: {fileID: 0}
     - target: {fileID: 859110065136040869, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
       propertyPath: m_Name
       value: Player Vehicle Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824373034267315072, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: m_Mass
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824373034267315072, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5189731429511346808, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50,6 +110,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189731429511346808, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572477533477775266, guid: 8931280b3fae3424a915da3cd42c33aa, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

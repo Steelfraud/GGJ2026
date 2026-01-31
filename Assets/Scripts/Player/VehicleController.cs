@@ -6,7 +6,7 @@ namespace Sampla.Player
 {
     public class VehicleController : MonoBehaviour
     {
-        [SerializeField] private PlayerInputController playerInputController;
+        [SerializeField] private PlayerInputController playerInputController; public PlayerInputController PlayerInputController { get { return playerInputController; } }
         [SerializeField] private Rigidbody vehicleRigidbody; public Rigidbody VehicleRigidbody { get { return vehicleRigidbody; } }
 
         [Space]
@@ -46,7 +46,10 @@ namespace Sampla.Player
 
         private float currentSpeedMS; public float CurrentSpeedMS { get { return currentSpeedMS; } }
         private float currentSpeedKMH; public float CurrentSpeedKMH { get { return currentSpeedKMH; } }
-        private float currentSteer;
+        private float currentDrift; public float CurrentDrift { get { return currentDrift; } }
+        private float currentSteer; public float CurrentSteer { get { return currentSteer; } }
+        private Vector3 currentVelocityDirection; public Vector3 CurrentVelocityDirection { get { return currentVelocityDirection; } }
+
         private float normalizedSteer;
         private float normalizedTorque;
         private float normalizedBrake;
@@ -88,7 +91,7 @@ namespace Sampla.Player
             MotorTorqueUpdate();
             SteeringUpdate();
             BreakUpdate();
-            CalculateSpeed();
+            CacheProperties();
         }
 
         void Update()
@@ -96,10 +99,12 @@ namespace Sampla.Player
             UpdateWheels();
         }
 
-        void CalculateSpeed()
+        void CacheProperties()
         {
             currentSpeedMS = vehicleRigidbody.linearVelocity.magnitude;
             currentSpeedKMH = MSToKMH(currentSpeedMS);
+            currentVelocityDirection = vehicleRigidbody.linearVelocity.normalized;
+            currentDrift = Vector3.SignedAngle(currentVelocityDirection, vehicleRigidbody.transform.forward, vehicleRigidbody.transform.up);
         }
 
         void CenterOfMassUpdate()

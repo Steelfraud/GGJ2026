@@ -19,13 +19,10 @@ namespace Sampla.Player
 
         void UpdateWheelParticles()
         {
-            Debug.DrawRay(vehicleController.transform.position, vehicleController.VehicleRigidbody.linearVelocity.normalized * 10f, Color.red);
+            Debug.DrawRay(vehicleController.transform.position, vehicleController.CurrentVelocityDirection * 10f, Color.red);
             Debug.DrawRay(vehicleController.transform.position, vehicleController.transform.forward * 10f, Color.green);
-            float vehicleAngleToVelocity = Vector3.Angle(vehicleController.VehicleRigidbody.linearVelocity.normalized, vehicleController.transform.forward);
 
-            //Debug.Log(vehicleAngleToVelocity);
-
-            if (vehicleAngleToVelocity > driftAngle)
+            if (vehicleController.CurrentDrift > driftAngle)
             {
                 if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM)
                 //if (vehicleController.CurrentSpeedKMH > driftSpeed)

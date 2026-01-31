@@ -10,14 +10,18 @@ namespace Sampla.Player
         public event PlayerInputAction OnSteerInput;
         public event PlayerInputAction OnThrottleInput;
         public event PlayerInputAction OnBrakeInput;
+        public event PlayerInputAction OnLookInput;
+        public event PlayerInputAction OnTurboInput;
 
         [HideInInspector, SerializeField] private PlayerInput playerInput;
 
         private float steerInput;
         private float throttleInput;
         private float brakeInput;
+        private float lookInput;
+        private float turboInput;
 
-        void Oalidate()
+        void OnValidate()
         {
             if (TryGetComponent(out PlayerInput playerInput))
             {
@@ -44,6 +48,18 @@ namespace Sampla.Player
             brakeInput = input.Get<float>();
             //Debug.Log("Brake: " + brakeInput);
             OnBrakeInput?.Invoke(brakeInput);
+        }
+
+        void OnLook(InputValue input)
+        {
+            lookInput = input.Get<float>();
+            OnLookInput?.Invoke(lookInput);
+        }
+
+        void OnTurbo(InputValue input)
+        {
+            turboInput = input.Get<float>();
+            OnTurboInput?.Invoke(turboInput);
         }
     }
 }

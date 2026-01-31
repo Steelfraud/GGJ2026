@@ -12,6 +12,8 @@ namespace Sampla.Player
             GUI.Label(layoutRect, new GUIContent("Speed: " + vehicleController.CurrentSpeedKMH.ToString("F1") + " km/h"));
             layoutRect.y += 15;
             GUI.Label(layoutRect, new GUIContent("RPM: " + vehicleController.GetAverageFrontWheelsRPM().ToString("F0") + " rpm"));
+            layoutRect.y += 15;
+            GUI.Label(layoutRect, new GUIContent("Turbo Left: " + vehicleController.CurrentTurboTimeLeft.ToString("F1") + " s"));
         }
     }
 }

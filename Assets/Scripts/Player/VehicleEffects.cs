@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Sampla.Player
@@ -12,6 +13,19 @@ namespace Sampla.Player
         [SerializeField] private ParticleSystem frontLeftWheelDriftParticles;
         [SerializeField] private ParticleSystem frontRightWheelDriftParticles;
 
+        [SerializeField] private TrailRenderer[] turboTrailRenderers;
+
+        void OnEnable()
+        {
+            OnTurboChanged(isTurboing: false);
+            vehicleController.OnTurboChange += OnTurboChanged;
+        }
+
+        void OnDisable()
+        {
+            vehicleController.OnTurboChange -= OnTurboChanged;
+        }
+
         void Update()
         {
             UpdateWheelParticles();
@@ -19,16 +33,12 @@ namespace Sampla.Player
 
         void UpdateWheelParticles()
         {
-            Debug.DrawRay(vehicleController.transform.position, vehicleController.VehicleRigidbody.linearVelocity.normalized * 10f, Color.red);
+            Debug.DrawRay(vehicleController.transform.position, vehicleController.CurrentVelocityDirection * 10f, Color.red);
             Debug.DrawRay(vehicleController.transform.position, vehicleController.transform.forward * 10f, Color.green);
-            float vehicleAngleToVelocity = Vector3.Angle(vehicleController.VehicleRigidbody.linearVelocity.normalized, vehicleController.transform.forward);
 
-            //Debug.Log(vehicleAngleToVelocity);
-
-            if (vehicleAngleToVelocity > driftAngle)
+            if (Mathf.Abs(vehicleController.CurrentDrift) > driftAngle)
             {
-                if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM)
-                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM && vehicleController.WheelFrontLeft.isGrounded)
                 {
                     PlayParticles(frontLeftWheelDriftParticles);
                 }
@@ -36,8 +46,7 @@ namespace Sampla.Player
                 {
                     StopParticles(frontLeftWheelDriftParticles);
                 }
-                if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM)
-                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM && vehicleController.WheelFrontRight.isGrounded)
                 {
                     PlayParticles(frontRightWheelDriftParticles);
                 }
@@ -50,6 +59,29 @@ namespace Sampla.Player
             {
                 StopParticles(frontLeftWheelDriftParticles);
                 StopParticles(frontRightWheelDriftParticles);
+            }
+        }
+
+        void OnTurboChanged(bool isTurboing)
+        {
+            if (turboTrailRenderers == null)
+                return;
+
+            for (int i = 0; i < turboTrailRenderers.Length; i++)
+            {
+                if (turboTrailRenderers[i] == null)
+                    continue;
+
+                turboTrailRenderers[i].emitting = isTurboing;
+                // if (isTurboing)
+                // {
+                //     //PlayParticles(turboParticles[i]);
+                // }
+                // else
+                // {
+                //     turboTrailRenderers[i].SetActive(false);
+                //     //StopParticles(turboParticles[i]);
+                // }
             }
         }
 

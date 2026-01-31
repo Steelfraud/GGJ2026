@@ -7,6 +7,11 @@ public class PlayerTriggerArea : MonoBehaviour
     public UnityEvent PlayerEnteredArea;
     public UnityEvent PlayerExitedArea;
 
+    public bool SetPlayerMask = false;
+    public CameraHandler.CameraState StateToSet = CameraHandler.CameraState.Nothing;
+
+    private bool playerInArea = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Player")
@@ -14,8 +19,7 @@ public class PlayerTriggerArea : MonoBehaviour
             return;
         }
 
-        //Debug.Log("Player in area?");
-        PlayerEnteredArea?.Invoke();
+        PlayerEntered();
     }
 
     private void OnTriggerExit(Collider other) 
@@ -25,10 +29,28 @@ public class PlayerTriggerArea : MonoBehaviour
             return;
         }
 
+        PlayerLeft();
+    }
+
+    protected virtual void PlayerEntered()
+    {
+        //Debug.Log("Player in area?");
+        PlayerEnteredArea?.Invoke();
+        playerInArea = true;
+
+        if (SetPlayerMask)
+        {
+            SetMyCameraState();
+        }
+    }
+
+    protected virtual void PlayerLeft()
+    {
         //Debug.Log("Player left area?");
         PlayerExitedArea?.Invoke();
+        playerInArea = false;
     }
-    
+
     public void SetPlayerCameraMask(int setTo)
     {
         if (CameraHandler.Instance == null)
@@ -45,6 +67,14 @@ public class PlayerTriggerArea : MonoBehaviour
         else
         {
             CameraHandler.Instance.SetNewCameraState((CameraHandler.CameraState)setTo);
+        }
+    }
+
+    protected void SetMyCameraState()
+    {
+        if (CameraHandler.Instance != null)
+        {
+            CameraHandler.Instance.SetNewCameraState(StateToSet);
         }
     }
 

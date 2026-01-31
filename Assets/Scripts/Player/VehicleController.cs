@@ -41,6 +41,8 @@ namespace Sampla.Player
         [SerializeField] private Transform wheelModelBackLeft;
         [SerializeField] private Transform wheelModelBackRight;
 
+        private float currentSpeedMS; public float CurrentSpeedMS { get { return currentSpeedMS; } }
+        private float currentSpeedKMH; public float CurrentSpeedKMH { get { return currentSpeedKMH; } }
         private float currentSteer;
         private float normalizedSteer;
         private float normalizedTorque;
@@ -83,11 +85,18 @@ namespace Sampla.Player
             MotorTorqueUpdate();
             SteeringUpdate();
             BreakUpdate();
+            CalculateSpeed();
         }
 
         void Update()
         {
             UpdateWheels();
+        }
+
+        void CalculateSpeed()
+        {
+            currentSpeedMS = vehicleRigidbody.linearVelocity.magnitude;
+            currentSpeedKMH = MSToKMH(currentSpeedMS);
         }
 
         void CenterOfMassUpdate()
@@ -117,7 +126,7 @@ namespace Sampla.Player
                 wheelFrontRight.motorTorque = Mathf.Max(wheelFrontRight.motorTorque - torque, 0);
             }
 
-            //Debug.Log("Left: " + wheelFrontLeft.rpm + " | Right: " + wheelFrontRight.rpm);
+            Debug.Log("Left: " + wheelFrontLeft.rpm + " | Right: " + wheelFrontRight.rpm);
 
 
             // wheelFrontLeft.motorTorque = currentTorque;

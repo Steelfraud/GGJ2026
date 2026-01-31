@@ -6,7 +6,7 @@ namespace Sampla.Player
 {
     public class VehicleController : MonoBehaviour
     {
-        [SerializeField] private PlayerInputController playerInputController;
+        [SerializeField] private PlayerInputController playerInputController; public PlayerInputController PlayerInputController { get { return playerInputController; } }
         [SerializeField] private Rigidbody vehicleRigidbody; public Rigidbody VehicleRigidbody { get { return vehicleRigidbody; } }
 
         [Space]
@@ -46,7 +46,10 @@ namespace Sampla.Player
 
         private float currentSpeedMS; public float CurrentSpeedMS { get { return currentSpeedMS; } }
         private float currentSpeedKMH; public float CurrentSpeedKMH { get { return currentSpeedKMH; } }
-        private float currentSteer;
+        private float currentDrift; public float CurrentDrift { get { return currentDrift; } }
+        private float currentSteer; public float CurrentSteer { get { return currentSteer; } }
+        private Vector3 currentVelocityDirection; public Vector3 CurrentVelocityDirection { get { return currentVelocityDirection; } }
+
         private float normalizedSteer;
         private float normalizedTorque;
         private float normalizedBrake;
@@ -88,7 +91,7 @@ namespace Sampla.Player
             MotorTorqueUpdate();
             SteeringUpdate();
             BreakUpdate();
-            CalculateSpeed();
+            CacheProperties();
         }
 
         void Update()
@@ -96,10 +99,12 @@ namespace Sampla.Player
             UpdateWheels();
         }
 
-        void CalculateSpeed()
+        void CacheProperties()
         {
             currentSpeedMS = vehicleRigidbody.linearVelocity.magnitude;
             currentSpeedKMH = MSToKMH(currentSpeedMS);
+            currentVelocityDirection = vehicleRigidbody.linearVelocity.normalized;
+            currentDrift = Vector3.SignedAngle(currentVelocityDirection, vehicleRigidbody.transform.forward, vehicleRigidbody.transform.up);
         }
 
         void CenterOfMassUpdate()
@@ -113,7 +118,7 @@ namespace Sampla.Player
 
         void DownForceUpdate()
         {
-            var eval = 1 - (currentSpeedKMH / maxSpeedKMH);
+            var eval = 1 - currentSpeedKMH / maxSpeedKMH;
             var downForceEval = speedCurve.Evaluate(eval) * downForce;
             vehicleRigidbody.AddForceAtPosition(-transform.up * downForceEval, vehicleRigidbody.position);
         }
@@ -141,8 +146,15 @@ namespace Sampla.Player
 
         void SteeringUpdate()
         {
-            var steerSpeedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
-            currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, steerSpeedEval * Time.fixedDeltaTime);
+            var speedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
+            if (Math.Abs(normalizedSteer) < Math.Abs(currentSteer))
+            {
+                currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * 10 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * Time.fixedDeltaTime);
+            }
 
             wheelFrontLeft.steerAngle = currentSteer;
             wheelFrontRight.steerAngle = currentSteer;

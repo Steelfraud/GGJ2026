@@ -10,12 +10,14 @@ namespace Sampla.Player
         public event PlayerInputAction OnSteerInput;
         public event PlayerInputAction OnThrottleInput;
         public event PlayerInputAction OnBrakeInput;
+        public event PlayerInputAction OnLookInput;
 
         [HideInInspector, SerializeField] private PlayerInput playerInput;
 
         private float steerInput;
         private float throttleInput;
         private float brakeInput;
+        private float lookInput;
 
         void Oalidate()
         {
@@ -44,6 +46,12 @@ namespace Sampla.Player
             brakeInput = input.Get<float>();
             //Debug.Log("Brake: " + brakeInput);
             OnBrakeInput?.Invoke(brakeInput);
+        }
+
+        void OnLook(InputValue input)
+        {
+            lookInput = input.Get<float>();
+            OnLookInput?.Invoke(lookInput);
         }
     }
 }

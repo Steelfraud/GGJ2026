@@ -332,7 +332,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8322249601628518968
 Transform:
   m_ObjectHideFlags: 0
@@ -455,11 +455,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputController: {fileID: 6108948017293738176}
   vehicleRigidbody: {fileID: 3824373034267315072}
-  torque: 400
-  maxTorque: 1000
+  torque: 600
+  maxTorque: 1200
   downForce: 18000
   brakeTorque: 500
-  steerSpeed: 10
+  steerSpeed: 4
   steerMaxAngle: 35
   centerOfMass: {fileID: 8572477533477775266}
   wheelFrontLeft: {fileID: 336354048135912459}
@@ -615,7 +615,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2071095540856069694
 Transform:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8723193894824794249
 Transform:
   m_ObjectHideFlags: 0
@@ -1582,7 +1582,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5520241845123502070
 Transform:
   m_ObjectHideFlags: 0

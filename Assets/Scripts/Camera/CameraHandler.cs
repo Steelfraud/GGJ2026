@@ -29,6 +29,7 @@ public class CameraHandler : Singleton<CameraHandler>
 
     public Animator CameraDimensionAnimator;
     public CameraSettingsDictionary CameraSettingsDict;
+    public RenderTexture MyTexture;
 
     public CameraState CurrentState = CameraState.Nothing;
 
@@ -40,7 +41,13 @@ public class CameraHandler : Singleton<CameraHandler>
     {
         if (CreateSingleton(this, SetDontDestroy))
         {
-
+            if (MyTexture != null)
+            {
+                MyTexture.Release();
+                MyTexture.width = Screen.width;
+                MyTexture.height = Screen.height;
+                MyTexture.Create();
+            }
         }
     }
 

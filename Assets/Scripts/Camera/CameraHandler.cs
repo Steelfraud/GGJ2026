@@ -16,6 +16,7 @@ public class CameraHandler : Singleton<CameraHandler>
         HorizontalTop,
         RotationLoop,
         DVDLoop,
+        Binoculars,
     }
 
     [Serializable]

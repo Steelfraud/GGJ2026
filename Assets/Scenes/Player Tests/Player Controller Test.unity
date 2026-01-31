@@ -1212,6 +1212,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Vehicle - Game Version
       objectReference: {fileID: 0}
+    - target: {fileID: 4282745881774714658, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
+      propertyPath: invertHeadDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282745881774714658, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
+      propertyPath: headTargetFollowSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4553853899101407682, guid: 576fb5721e5b97b4595dd5e5c33b5f3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1890,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1580137950
 Transform:
   m_ObjectHideFlags: 0
@@ -1930,7 +1938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1678567367
 Transform:
   m_ObjectHideFlags: 0

@@ -738,6 +738,8 @@ MonoBehaviour:
   turboTrailRenderers:
   - {fileID: 78370329185982323}
   - {fileID: 4138395926792503265}
+  - {fileID: 1678879238642411072}
+  - {fileID: 3401475047328796370}
 --- !u!54 &5114055193845627713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1705,7 +1707,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2405,6 +2407,11 @@ TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 6897184183566982493, guid: 58e1dea3e169a1b47b59149b4173564a, type: 3}
   m_PrefabInstance: {fileID: 6818965639600556590}
   m_PrefabAsset: {fileID: 0}
+--- !u!96 &1678879238642411072 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 5326991841398320238, guid: 58e1dea3e169a1b47b59149b4173564a, type: 3}
+  m_PrefabInstance: {fileID: 6818965639600556590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3803827656701499591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7667444367493403369, guid: 58e1dea3e169a1b47b59149b4173564a, type: 3}
@@ -2470,6 +2477,11 @@ PrefabInstance:
 --- !u!4 &914526857185177685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7667444367493403369, guid: 58e1dea3e169a1b47b59149b4173564a, type: 3}
+  m_PrefabInstance: {fileID: 7411008896775496380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &3401475047328796370 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 5326991841398320238, guid: 58e1dea3e169a1b47b59149b4173564a, type: 3}
   m_PrefabInstance: {fileID: 7411008896775496380}
   m_PrefabAsset: {fileID: 0}
 --- !u!96 &4138395926792503265 stripped

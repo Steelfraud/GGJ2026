@@ -113,7 +113,7 @@ namespace Sampla.Player
 
         void DownForceUpdate()
         {
-            var eval = 1 - (currentSpeedKMH / maxSpeedKMH);
+            var eval = 1 - currentSpeedKMH / maxSpeedKMH;
             var downForceEval = speedCurve.Evaluate(eval) * downForce;
             vehicleRigidbody.AddForceAtPosition(-transform.up * downForceEval, vehicleRigidbody.position);
         }
@@ -141,8 +141,15 @@ namespace Sampla.Player
 
         void SteeringUpdate()
         {
-            var steerSpeedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
-            currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, steerSpeedEval * Time.fixedDeltaTime);
+            var speedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
+            if (Math.Abs(normalizedSteer) < Math.Abs(currentSteer))
+            {
+                currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * 10 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * Time.fixedDeltaTime);
+            }
 
             wheelFrontLeft.steerAngle = currentSteer;
             wheelFrontRight.steerAngle = currentSteer;

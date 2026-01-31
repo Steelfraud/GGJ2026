@@ -69,7 +69,7 @@ namespace Sampla.Player
 
         void OnValidate()
         {
-            vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
+            //vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
         }
 
         void OnEnable()

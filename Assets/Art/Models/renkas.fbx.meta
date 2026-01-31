@@ -3,7 +3,17 @@ guid: 6cf874843da2f3a4dba85ebac27891a7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gumi
+    second: {fileID: 2100000, guid: 60ec19a5f6e46d64aa85757849e1a967, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metallitotuus
+    second: {fileID: 2100000, guid: 6f30337d02223254cb50fd12bfab7062, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0032
+    globalScale: 0.32
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

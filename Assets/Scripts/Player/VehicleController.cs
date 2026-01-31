@@ -11,6 +11,9 @@ namespace Sampla.Player
         [Space]
         [SerializeField, Min(0f)] private float torque = 100;
         [SerializeField, Min(0f)] private float maxTorque = 1000;
+        [SerializeField, Min(0f)] private float reverseThresholdInKMH = 5;
+        [SerializeField, Min(0f)] private float reverseTorque = 50;
+        [SerializeField, Min(0f)] private float maxReverseTorque = 500;
         [SerializeField, Min(0f)] private float downForce = 200;
         [SerializeField, Min(0f)] private float brakeTorque = 500;
 
@@ -27,10 +30,10 @@ namespace Sampla.Player
         [SerializeField] private Transform centerOfMass;
 
         [Space]
-        [SerializeField] private WheelCollider wheelFrontLeft;
-        [SerializeField] private WheelCollider wheelFrontRight;
-        [SerializeField] private WheelCollider wheelBackLeft;
-        [SerializeField] private WheelCollider wheelBackRight;
+        [SerializeField] private WheelCollider wheelFrontLeft; public WheelCollider WheelFrontLeft { get { return wheelFrontLeft; } }
+        [SerializeField] private WheelCollider wheelFrontRight; public WheelCollider WheelFrontRight { get { return wheelFrontRight; } }
+        [SerializeField] private WheelCollider wheelBackLeft; public WheelCollider WheelBackLeft { get { return wheelBackLeft; } }
+        [SerializeField] private WheelCollider wheelBackRight; public WheelCollider WheelBackRight { get { return wheelBackRight; } }
 
         [Space]
         [SerializeField] private Transform wheelModelFrontLeft;
@@ -137,10 +140,35 @@ namespace Sampla.Player
 
         void BreakUpdate()
         {
-            wheelFrontLeft.brakeTorque = brakeTorque * normalizedBrake;
-            wheelFrontRight.brakeTorque = brakeTorque * normalizedBrake;
-            wheelBackLeft.brakeTorque = brakeTorque * normalizedBrake;
-            wheelBackRight.brakeTorque = brakeTorque * normalizedBrake;
+            if (normalizedBrake == 0)
+            {
+                wheelFrontLeft.brakeTorque = 0f;
+                wheelFrontRight.brakeTorque = 0f;
+                wheelBackLeft.brakeTorque = 0f;
+                wheelBackRight.brakeTorque = 0f;
+                return;
+            }
+
+            if (vehicleRigidbody.linearVelocity.magnitude > VehicleController.KMHToMS(reverseThresholdInKMH) && Vector3.Dot(vehicleRigidbody.linearVelocity.normalized, transform.forward) > 0)
+            {
+                wheelFrontLeft.brakeTorque = brakeTorque * normalizedBrake;
+                wheelFrontRight.brakeTorque = brakeTorque * normalizedBrake;
+                wheelBackLeft.brakeTorque = brakeTorque * normalizedBrake;
+                wheelBackRight.brakeTorque = brakeTorque * normalizedBrake;
+            }
+            else
+            {
+                wheelFrontLeft.brakeTorque = 0f;
+                wheelFrontRight.brakeTorque = 0f;
+                wheelBackLeft.brakeTorque = 0f;
+                wheelBackRight.brakeTorque = 0f;
+
+                wheelFrontLeft.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
+                wheelFrontRight.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
+                wheelBackLeft.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
+                wheelBackRight.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
+            }
+
         }
 
         void UpdateWheels()
@@ -174,6 +202,16 @@ namespace Sampla.Player
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(vehicleRigidbody.worldCenterOfMass, 0.1f);
+        }
+
+        public static float MSToKMH(float metersPerSecond)
+        {
+            return metersPerSecond * 3.6f;
+        }
+
+        public static float KMHToMS(float kilometersPerHour)
+        {
+            return kilometersPerHour * 0.2777777778f;
         }
     }
 }

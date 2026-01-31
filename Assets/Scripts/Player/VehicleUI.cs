@@ -1,20 +1,17 @@
-using Sampla.Player;
 using UnityEngine;
 
-public class VehicleUI : MonoBehaviour
+namespace Sampla.Player
 {
-    [SerializeField] private VehicleController vehicleController;
-
-    void OnGUI()
+    public class VehicleUI : MonoBehaviour
     {
-        Rect layoutRect = new Rect(50, 50, 200, 100);
-        GUI.Label(layoutRect, new GUIContent("Speed: " + MSToKMH(vehicleController.VehicleRigidbody.linearVelocity.magnitude).ToString("F1") + " km/h"));
-        layoutRect.y += 15;
-        GUI.Label(layoutRect, new GUIContent("RPM: " + vehicleController.GetAverageFrontWheelsRPM().ToString("F0") + " rpm"));
-    }
+        [SerializeField] private VehicleController vehicleController;
 
-    float MSToKMH(float metersPerSecond)
-    {
-        return metersPerSecond * 3.6f;
+        void OnGUI()
+        {
+            Rect layoutRect = new Rect(50, 50, 200, 100);
+            GUI.Label(layoutRect, new GUIContent("Speed: " + VehicleController.MSToKMH(vehicleController.VehicleRigidbody.linearVelocity.magnitude).ToString("F1") + " km/h"));
+            layoutRect.y += 15;
+            GUI.Label(layoutRect, new GUIContent("RPM: " + vehicleController.GetAverageFrontWheelsRPM().ToString("F0") + " rpm"));
+        }
     }
 }

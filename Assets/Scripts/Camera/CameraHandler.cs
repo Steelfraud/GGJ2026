@@ -46,9 +46,7 @@ public class CameraHandler : Singleton<CameraHandler>
 
     // Update is called once per frame
     void Update()
-    {
-
-        
+    {        
         if (InputSystem.GetDevice<Keyboard>().f10Key.wasPressedThisFrame)
         {
             CameraState stateToSet = CameraState.Nothing;
@@ -97,7 +95,7 @@ public class CameraHandler : Singleton<CameraHandler>
 
     public void SetNewCameraState(CameraState newCameraState)
     {
-        if (lastKnownState == CurrentState)
+        if (lastKnownState == newCameraState)
         {
             return;
         }
@@ -115,6 +113,7 @@ public class CameraHandler : Singleton<CameraHandler>
 
         CurrentState = newCameraState;
         lastKnownState = CurrentState;
+        Debug.Log("Set new camera state to: " + CurrentState);
 
         if (CurrentState != CameraState.Nothing)
         {

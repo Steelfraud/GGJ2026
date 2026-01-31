@@ -538,31 +538,79 @@ MonoBehaviour:
   reverseTorque: 400
   maxReverseTorque: 700
   downForce: 30000
-  brakeTorque: 2000
-  maxSpeedKMH: 250
-  turboForce: 100000
-  maxTurboTime: 2
-  steerSpeed: 4
-  speedCurve:
+  downForceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0041160583
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
       value: 1
-      inSlope: -0.2492611
-      outSlope: -0.2492611
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  brakeTorque: 2000
+  maxSpeedKMH: 300
+  turboForce: 100000
+  maxTurboTime: 2
+  linearDampingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.003921509
+      value: 0.006597683
+      inSlope: 0.010581563
+      outSlope: 0.010581563
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.99819946
+      value: 0.12947845
+      inSlope: 2.379204
+      outSlope: 2.379204
+      tangentMode: 0
+      weightedMode: 1
+      inWeight: 0.05249695
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  steerSpeed: 4
+  steerSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.0036362736
+      outSlope: -0.0036362736
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.60250986
+      outWeight: 1
     - serializedVersion: 3
-      time: 0.9874878
-      value: 0.20477295
-      inSlope: -1.5221106
-      outSlope: -1.5221106
+      time: 1
+      value: 0.2
+      inSlope: -1.9982252
+      outSlope: -1.9982252
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.054393437
+      inWeight: 0.046974182
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -124,7 +124,7 @@ namespace Sampla.Player
             TurboUpdate();
             LinearDampingUpdate();
             CacheProperties();
-            Debug.Log($"{vehicleRigidbody.linearVelocity.magnitude}, {vehicleRigidbody.linearDamping}");
+            //Debug.Log($"{vehicleRigidbody.linearVelocity.magnitude}, {vehicleRigidbody.linearDamping}");
         }
 
         void LinearDampingUpdate()

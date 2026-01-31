@@ -15,6 +15,7 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float reverseThresholdInKMH = 5;
         [SerializeField, Min(0f)] private float reverseTorque = 50;
         [SerializeField, Min(0f)] private float maxReverseTorque = 500;
+        [SerializeField, Min(0f)] private float turboForce = 1000;
         [SerializeField, Min(0f)] private float downForce = 200;
         [SerializeField, Min(0f)] private float brakeTorque = 500;
         [SerializeField, Min(0f)] private float maxSpeedKMH = 300;
@@ -31,6 +32,7 @@ namespace Sampla.Player
         //[SerializeField] private Transform frontSteeringCenter;
         //[SerializeField] private Transform backSteeringCenter;
         [SerializeField] private Transform centerOfMass;
+        [SerializeField] private Transform turboCenter;
 
         [Space]
         [SerializeField] private WheelCollider wheelFrontLeft; public WheelCollider WheelFrontLeft { get { return wheelFrontLeft; } }
@@ -53,12 +55,19 @@ namespace Sampla.Player
         private float normalizedSteer;
         private float normalizedTorque;
         private float normalizedBrake;
+        private float normalizedTurbo;
+
+        void OnValidate()
+        {
+            vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
+        }
 
         void OnEnable()
         {
             playerInputController.OnSteerInput += OnSteerInputChanged;
             playerInputController.OnThrottleInput += OnThrottleInputChanged;
             playerInputController.OnBrakeInput += OnBrakeInputChanged;
+            playerInputController.OnTurboInput += OnTurboInputChanged;
             vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
             CenterOfMassUpdate();
         }
@@ -68,6 +77,7 @@ namespace Sampla.Player
             playerInputController.OnSteerInput -= OnSteerInputChanged;
             playerInputController.OnThrottleInput -= OnThrottleInputChanged;
             playerInputController.OnBrakeInput -= OnBrakeInputChanged;
+            playerInputController.OnTurboInput -= OnTurboInputChanged;
         }
 
         void OnThrottleInputChanged(float inputValue)
@@ -85,12 +95,18 @@ namespace Sampla.Player
             normalizedBrake = inputValue;
         }
 
+        void OnTurboInputChanged(float inputValue)
+        {
+            normalizedTurbo = inputValue;
+        }
+
         void FixedUpdate()
         {
             DownForceUpdate();
             MotorTorqueUpdate();
             SteeringUpdate();
             BreakUpdate();
+            TurboUpdate();
             CacheProperties();
         }
 
@@ -195,7 +211,11 @@ namespace Sampla.Player
                 wheelBackLeft.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
                 wheelBackRight.motorTorque = Mathf.Max(wheelFrontLeft.motorTorque - (reverseTorque * normalizedBrake), -maxReverseTorque);
             }
+        }
 
+        void TurboUpdate()
+        {
+            vehicleRigidbody.AddForceAtPosition(turboCenter.forward * turboForce * normalizedTurbo, turboCenter.position);
         }
 
         void UpdateWheels()

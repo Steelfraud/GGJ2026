@@ -22,10 +22,9 @@ namespace Sampla.Player
             Debug.DrawRay(vehicleController.transform.position, vehicleController.CurrentVelocityDirection * 10f, Color.red);
             Debug.DrawRay(vehicleController.transform.position, vehicleController.transform.forward * 10f, Color.green);
 
-            if (vehicleController.CurrentDrift > driftAngle)
+            if (Mathf.Abs(vehicleController.CurrentDrift) > driftAngle)
             {
-                if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM)
-                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontLeft.rpm) > driftRPM && vehicleController.WheelFrontLeft.isGrounded)
                 {
                     PlayParticles(frontLeftWheelDriftParticles);
                 }
@@ -33,8 +32,7 @@ namespace Sampla.Player
                 {
                     StopParticles(frontLeftWheelDriftParticles);
                 }
-                if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM)
-                //if (vehicleController.CurrentSpeedKMH > driftSpeed)
+                if (Mathf.Abs(vehicleController.WheelFrontRight.rpm) > driftRPM && vehicleController.WheelFrontRight.isGrounded)
                 {
                     PlayParticles(frontRightWheelDriftParticles);
                 }

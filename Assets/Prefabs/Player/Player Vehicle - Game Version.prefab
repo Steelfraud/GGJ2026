@@ -62,6 +62,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4553853899101407682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406000854285252693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763725194501515565}
+  m_Layer: 0
+  m_Name: Turbo Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763725194501515565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406000854285252693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44, z: -1.71}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4553853899101407682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907364070910445641
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +466,7 @@ Transform:
   - {fileID: 3537525771243433404}
   - {fileID: 6652821111877987190}
   - {fileID: 2642877814204974054}
+  - {fileID: 1763725194501515565}
   - {fileID: 6168783549294214994}
   - {fileID: 2361843508344508578}
   - {fileID: 5474195547336209277}
@@ -503,6 +535,7 @@ MonoBehaviour:
   reverseThresholdInKMH: 5
   reverseTorque: 400
   maxReverseTorque: 700
+  turboForce: 100000
   downForce: 30000
   brakeTorque: 2000
   maxSpeedKMH: 250
@@ -533,6 +566,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   steerMaxAngle: 15
   centerOfMass: {fileID: 2642877814204974054}
+  turboCenter: {fileID: 1763725194501515565}
   wheelFrontLeft: {fileID: 7717422905497035468}
   wheelFrontRight: {fileID: 6797159146742127232}
   wheelBackLeft: {fileID: 4101180516720816150}

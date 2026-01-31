@@ -455,16 +455,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputController: {fileID: 6108948017293738176}
   vehicleRigidbody: {fileID: 3824373034267315072}
-  torque: 200
-  maxTorque: 5000
+  torque: 400
+  maxTorque: 1000
   downForce: 18000
   brakeTorque: 500
   steerSpeed: 10
   steerMaxAngle: 35
-  throttleCenter: {fileID: 8322249601628518968}
-  downForceCenter: {fileID: 2071095540856069694}
-  frontSteeringCenter: {fileID: 5520241845123502070}
-  backSteeringCenter: {fileID: 8723193894824794249}
   centerOfMass: {fileID: 8572477533477775266}
   wheelFrontLeft: {fileID: 336354048135912459}
   wheelFrontRight: {fileID: 6786936258362013298}
@@ -514,7 +510,7 @@ Rigidbody:
   m_GameObject: {fileID: 859110065136040869}
   serializedVersion: 4
   m_Mass: 2000
-  m_Drag: 0
+  m_Drag: 0.02
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

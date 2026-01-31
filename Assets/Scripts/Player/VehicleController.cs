@@ -20,10 +20,10 @@ namespace Sampla.Player
 
 
         [Space]
-        [SerializeField] private Transform throttleCenter;
-        [SerializeField] private Transform downForceCenter;
-        [SerializeField] private Transform frontSteeringCenter;
-        [SerializeField] private Transform backSteeringCenter;
+        //[SerializeField] private Transform throttleCenter;
+        //[SerializeField] private Transform downForceCenter;
+        //[SerializeField] private Transform frontSteeringCenter;
+        //[SerializeField] private Transform backSteeringCenter;
         [SerializeField] private Transform centerOfMass;
 
         [Space]
@@ -32,6 +32,7 @@ namespace Sampla.Player
         [SerializeField] private WheelCollider wheelBackLeft;
         [SerializeField] private WheelCollider wheelBackRight;
 
+        [Space]
         [SerializeField] private Transform wheelModelFrontLeft;
         [SerializeField] private Transform wheelModelFrontRight;
         [SerializeField] private Transform wheelModelBackLeft;

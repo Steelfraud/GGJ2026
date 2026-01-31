@@ -1,9 +1,34 @@
 fileFormatVersion: 2
-guid: 6cf874843da2f3a4dba85ebac27891a7
+guid: 1b6d5867cfaa63849ad839a1059ca96e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: audo
+    second: {fileID: 2100000, guid: 6ff30b4dde8efbe4bbe342a72eecb64b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bengid
+    second: {fileID: 2100000, guid: 20109e51f128b5441a8c66990b2d486d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lasid
+    second: {fileID: 2100000, guid: c02a13a0126d50e458fe742286484785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: raddi
+    second: {fileID: 2100000, guid: d0318f3d1b7271e4cb031fc58c442f0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: valod
+    second: {fileID: 2100000, guid: 040187a3fec40964f975fff00aa2fec1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +113,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0032
+    globalScale: 0.32
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

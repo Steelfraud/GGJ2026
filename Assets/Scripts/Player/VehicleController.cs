@@ -19,14 +19,16 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float reverseTorque = 50;
         [SerializeField, Min(0f)] private float maxReverseTorque = 500;
         [SerializeField, Min(0f)] private float downForce = 200;
+        [SerializeField] private AnimationCurve downForceCurve;
         [SerializeField, Min(0f)] private float brakeTorque = 500;
         [SerializeField, Min(0f)] private float maxSpeedKMH = 300;
         [SerializeField, Min(0f)] private float turboForce = 1000;
         [SerializeField, Min(0f)] private float maxTurboTime = 2f;
+        [SerializeField] private AnimationCurve linearDampingCurve;
 
         [Space]
         [SerializeField, Min(0f)] private float steerSpeed = 10f;
-        [FormerlySerializedAs("steerSpeedCurve")] [SerializeField] private AnimationCurve speedCurve;
+        [SerializeField] private AnimationCurve steerSpeedCurve;
         [SerializeField, Min(0f)] private float steerMaxAngle = 25f;
 
 
@@ -75,7 +77,7 @@ namespace Sampla.Player
             playerInputController.OnThrottleInput += OnThrottleInputChanged;
             playerInputController.OnBrakeInput += OnBrakeInputChanged;
             playerInputController.OnTurboInput += OnTurboInputChanged;
-            vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
+            // vehicleRigidbody.maxLinearVelocity = KMHToMS(maxSpeedKMH);
             currentTurboTimeLeft = maxTurboTime;
             CenterOfMassUpdate();
         }
@@ -115,7 +117,14 @@ namespace Sampla.Player
             SteeringUpdate();
             BreakUpdate();
             TurboUpdate();
+            LinearDampingUpdate();
             CacheProperties();
+            Debug.Log($"{vehicleRigidbody.linearVelocity.magnitude}, {vehicleRigidbody.linearDamping}");
+        }
+
+        void LinearDampingUpdate()
+        {
+            vehicleRigidbody.linearDamping = linearDampingCurve.Evaluate(currentSpeedKMH / maxSpeedKMH);
         }
 
         void Update()
@@ -142,8 +151,7 @@ namespace Sampla.Player
 
         void DownForceUpdate()
         {
-            var eval = 1 - currentSpeedKMH / maxSpeedKMH;
-            var downForceEval = speedCurve.Evaluate(eval) * downForce;
+            var downForceEval = downForceCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * downForce;
             vehicleRigidbody.AddForceAtPosition(-transform.up * downForceEval, vehicleRigidbody.position);
         }
 
@@ -170,7 +178,7 @@ namespace Sampla.Player
 
         void SteeringUpdate()
         {
-            var speedEval = speedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
+            var speedEval = steerSpeedCurve.Evaluate(currentSpeedKMH / maxSpeedKMH) * steerSpeed;
             if (Math.Abs(normalizedSteer) < Math.Abs(currentSteer))
             {
                 currentSteer = Mathf.Lerp(currentSteer, normalizedSteer * steerMaxAngle, speedEval * 10 * Time.fixedDeltaTime);

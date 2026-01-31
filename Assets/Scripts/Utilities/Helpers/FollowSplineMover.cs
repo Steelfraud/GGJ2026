@@ -10,12 +10,21 @@ public class FollowSplineMover : MonoBehaviour
     public bool LoopSplineAfterComplete = true;
     public bool ReverseSplineAfterComplete = false;
     public float TimeToCompleteSpline = 5f;
+    public bool AddRandomCompletionTime = false;
+    public AnimationCurve RandomTimeMultiplier;
     public float WaitTimeAfterCompletion = 0f;
+
+    private float timeToComplete;
 
     private bool isReversing = false;
     private float timeTraveled = 0f;
     private float timeWaited = 0f;
-    
+
+    private void Awake()
+    {
+        SetCompletionTimer();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +38,7 @@ public class FollowSplineMover : MonoBehaviour
             TransformToMove = transform;
         }
 
-        if (timeTraveled > TimeToCompleteSpline)
+        if (timeTraveled > timeToComplete)
         {
             if (LoopSplineAfterComplete == false && ReverseSplineAfterComplete == false)
             {
@@ -52,6 +61,7 @@ public class FollowSplineMover : MonoBehaviour
                     isReversing = !isReversing;
                 }
 
+                SetCompletionTimer();
                 timeTraveled = 0f;
                 timeWaited = 0f;
                 return;
@@ -78,6 +88,17 @@ public class FollowSplineMover : MonoBehaviour
         {
             Debug.LogError("wtf?");
         }           
+    }
+
+    private void SetCompletionTimer()
+    {
+        timeToComplete = TimeToCompleteSpline;
+
+        if (AddRandomCompletionTime)
+        {
+            float randomValue = UnityEngine.Random.Range(0, 1f);
+            timeToComplete *= RandomTimeMultiplier.Evaluate(randomValue);
+        }
     }
 
 }

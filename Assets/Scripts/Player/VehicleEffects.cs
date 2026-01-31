@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Sampla.Player
@@ -11,6 +12,19 @@ namespace Sampla.Player
         [SerializeField, Min(0f)] private float driftRPM = 400;
         [SerializeField] private ParticleSystem frontLeftWheelDriftParticles;
         [SerializeField] private ParticleSystem frontRightWheelDriftParticles;
+
+        [SerializeField] private TrailRenderer[] turboTrailRenderers;
+
+        void OnEnable()
+        {
+            OnTurboChanged(isTurboing: false);
+            vehicleController.OnTurboChange += OnTurboChanged;
+        }
+
+        void OnDisable()
+        {
+            vehicleController.OnTurboChange -= OnTurboChanged;
+        }
 
         void Update()
         {
@@ -45,6 +59,29 @@ namespace Sampla.Player
             {
                 StopParticles(frontLeftWheelDriftParticles);
                 StopParticles(frontRightWheelDriftParticles);
+            }
+        }
+
+        void OnTurboChanged(bool isTurboing)
+        {
+            if (turboTrailRenderers == null)
+                return;
+
+            for (int i = 0; i < turboTrailRenderers.Length; i++)
+            {
+                if (turboTrailRenderers[i] == null)
+                    continue;
+
+                turboTrailRenderers[i].emitting = isTurboing;
+                // if (isTurboing)
+                // {
+                //     //PlayParticles(turboParticles[i]);
+                // }
+                // else
+                // {
+                //     turboTrailRenderers[i].SetActive(false);
+                //     //StopParticles(turboParticles[i]);
+                // }
             }
         }
 

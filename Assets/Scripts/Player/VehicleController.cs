@@ -6,6 +6,9 @@ namespace Sampla.Player
 {
     public class VehicleController : MonoBehaviour
     {
+        public delegate void ValueChangedAction(bool value);
+        public event ValueChangedAction OnTurboChange;
+
         [SerializeField] private PlayerInputController playerInputController; public PlayerInputController PlayerInputController { get { return playerInputController; } }
         [SerializeField] private Rigidbody vehicleRigidbody; public Rigidbody VehicleRigidbody { get { return vehicleRigidbody; } }
 
@@ -58,6 +61,8 @@ namespace Sampla.Player
         private float normalizedTorque;
         private float normalizedBrake;
         private float normalizedTurbo;
+
+        private bool isTurboing;
 
         void OnValidate()
         {
@@ -228,6 +233,18 @@ namespace Sampla.Player
             }
 
             float turboForceMagnitude = currentTurboTimeLeft > 0 ? turboForce * normalizedTurbo : 0f;
+
+            if (turboForceMagnitude > 0 && !isTurboing)
+            {
+                isTurboing = true;
+                OnTurboChange?.Invoke(true);
+            }
+            else if (turboForceMagnitude == 0 && isTurboing)
+            {
+                isTurboing = false;
+                OnTurboChange?.Invoke(false);
+            }
+
             vehicleRigidbody.AddForceAtPosition(turboCenter.forward * turboForceMagnitude, turboCenter.position);
         }
 

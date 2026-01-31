@@ -70,6 +70,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d9e67e8b-4347-459f-83fe-de4f5c23158d",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c427270b-85e2-4546-a4ce-eec18162e7f0",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -81,8 +92,30 @@
                 },
                 {
                     "name": "",
+                    "id": "66919075-feb1-4cc7-8828-ee71e0ed8efc",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9603ccb6-42bd-4e59-a7b9-65ca2c92e7c5",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3de9c59-f34a-45a6-a1b5-f66fd2165623",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

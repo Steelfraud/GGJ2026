@@ -465,7 +465,14 @@ MonoBehaviour:
   maxReverseTorque: 700
   downForce: 18000
   brakeTorque: 2000
+  maxSpeedKMH: 300
   steerSpeed: 10
+  speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   steerMaxAngle: 35
   centerOfMass: {fileID: 8572477533477775266}
   wheelFrontLeft: {fileID: 336354048135912459}
@@ -520,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleController: {fileID: 585688460705861598}
-  driftAngle: 9
+  driftAngle: 3
   driftSpeed: 20
   driftRPM: 200
   frontLeftWheelDriftParticles: {fileID: 3891422386235780222}
@@ -1518,7 +1525,7 @@ Transform:
   m_GameObject: {fileID: 7373038476324275871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -5.19}
+  m_LocalPosition: {x: 0, y: 2.4, z: -5.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

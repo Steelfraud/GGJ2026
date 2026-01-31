@@ -73,7 +73,7 @@
                     "id": "d9e67e8b-4347-459f-83fe-de4f5c23158d",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone(min=0.08,max=0.96)",
                     "groups": "",
                     "action": "Steer",
                     "isComposite": false,

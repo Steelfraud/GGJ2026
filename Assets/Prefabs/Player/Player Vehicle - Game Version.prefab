@@ -536,7 +536,7 @@ MonoBehaviour:
   maxTorque: 2000
   reverseThresholdInKMH: 5
   reverseTorque: 400
-  maxReverseTorque: 700
+  maxReverseTorque: 1300
   downForce: 30000
   downForceCurve:
     serializedVersion: 2
@@ -642,6 +642,7 @@ MonoBehaviour:
   vehicleCamera: {fileID: 8377948553174829604}
   cameraMoveTarget: {fileID: 8095848687475821530}
   cameraLookTarget: {fileID: 5482540883987932769}
+  staticCameraWorldUp: 0
   cameraMoveSpeed: 13
   cameraOffsetSpeed: 3
   cameraRotationSpeed: 15

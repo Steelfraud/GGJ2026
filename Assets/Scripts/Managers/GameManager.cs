@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     public VehicleController PlayerVehicle;
+    public CheckpointArea StartingCheckPoint;
 
     private CheckpointArea currentCheckPoint;
 
@@ -15,6 +16,14 @@ public class GameManager : Singleton<GameManager>
         if (CreateSingleton(this, SetDontDestroy))
         {
 
+        }
+    }
+
+    private void Start()
+    {
+        if (this.StartingCheckPoint != null)
+        {
+            SetPlayerCheckpoint(this.StartingCheckPoint);
         }
     }
 

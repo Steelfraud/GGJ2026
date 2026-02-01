@@ -47,7 +47,7 @@ public class CarAudioHandler : MonoBehaviour
             return;
         }
 
-        Debug.Log("CRASH");
+        //Debug.Log("CRASH");
         float pitch = 1f;
 
         if (CrashPitchMaxOffset > 0f)
@@ -61,6 +61,11 @@ public class CarAudioHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag is "Player" or "Vehicle")
+        {
+            return;
+        }
+
         PlayCrashingSound();
     }
 

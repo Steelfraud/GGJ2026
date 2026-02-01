@@ -8,6 +8,10 @@ namespace Sampla.Player
         [SerializeField] private VehicleController vehicleController;
         [SerializeField] private TextMeshPro turboFollowersText;
         [SerializeField, Range(0, 9999999)] private int maxTurboFollowers; 
+
+        [SerializeField] private TextMeshPro timeLimitText;
+
+        [Space]
         [SerializeField] private bool showDebugGUI = true;
 
         void OnGUI()
@@ -25,7 +29,14 @@ namespace Sampla.Player
 
         void Update()
         {
-            turboFollowersText.text = Mathf.FloorToInt(vehicleController.NormalizedTurboLeft * maxTurboFollowers).ToString();
+            if (turboFollowersText != null)
+            {
+                turboFollowersText.text = Mathf.FloorToInt(vehicleController.NormalizedTurboLeft * maxTurboFollowers).ToString();
+            }
+            if (timeLimitText != null && GameManager.Instance != null)
+            {
+                timeLimitText.text = GameManager.Instance.CurrentTimeLeft.ToString();
+            }
         }
     }
 }

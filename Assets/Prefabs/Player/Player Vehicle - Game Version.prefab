@@ -755,7 +755,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.2
+      value: 0.3
       inSlope: 1.6450387
       outSlope: 1.6450387
       tangentMode: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
       outWeight: 0.059417665
     - serializedVersion: 3
       time: 1
-      value: 0.8
+      value: 0.9
       inSlope: 0.14179437
       outSlope: 0.14179437
       tangentMode: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.85
+      value: 0.95
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1418,7 +1418,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0b819a3f205f8364e9b8ac9c5b5bf4a6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

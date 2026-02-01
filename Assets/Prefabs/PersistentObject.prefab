@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MusicPlayer: {fileID: 8975411762147711633}
-  startingPlaylistIdentifier: 
+  startingPlaylistIdentifier: Game Playlist
 --- !u!114 &4803266707986760688
 MonoBehaviour:
   m_ObjectHideFlags: 0

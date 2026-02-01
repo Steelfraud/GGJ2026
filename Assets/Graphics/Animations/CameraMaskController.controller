@@ -239,7 +239,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DVD Menu Entry
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2035094690992874412}
@@ -288,7 +288,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter 360 rotate
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3840011790108045696}
@@ -439,7 +439,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit Vertical Left
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6825554864270067945}
@@ -466,7 +466,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit Horizontal Top
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3481821411515344676}
@@ -586,7 +586,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit Horizontal Bottom
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8343170796555909517}
@@ -766,7 +766,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter Horizontal Bottom
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8338620580605046054}
@@ -843,7 +843,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter Vertical Left
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8244291947670975359}
@@ -1162,7 +1162,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter Vertical Right
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1969090900181037181}
@@ -1211,7 +1211,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit 360 rotate
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1157557252243118900}
@@ -1238,7 +1238,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter Horizontal Top
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5166129918057931556}
@@ -1312,7 +1312,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enter Binoculars
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4924958982940911471}
@@ -1361,7 +1361,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit Binoculars
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4130962216239813921}
@@ -1388,7 +1388,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Exit Vertical Right
-  m_Speed: -1.5
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3344916111764475940}
